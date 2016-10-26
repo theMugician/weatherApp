@@ -1,0 +1,15 @@
+#app{
+	max-width: 480px;
+	margin-top: 60px;
+	background: white;
+	min-height: 200px;
+	padding-left: 0;
+	padding-right: 0;
+}
+html{
+	background: #f3f3f3;
+}
+
+body{
+	background-color: transparent!important;
+}
