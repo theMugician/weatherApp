@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Geosuggest from 'react-geosuggest';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -16,6 +19,9 @@ class SearchBar extends Component {
 
   onSelection(event) {
     console.log('Selected Coords: ', event.location);
+
+    // Fetch weather data
+    this.props.fetchWeather(event.location);
 
     // Clear the geosuggest box by accessing the clear method of Geosuggest on this instance
     this.refs.geosuggest_component.clear();
@@ -37,4 +43,9 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+// Set the fetchWeather action creator to be available on props
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 
 import SearchBar from '../containers/search_bar';
+import WeatherForecast from '../containers/weather_forecast';
 
 export default class App extends Component {
   render() {
@@ -17,13 +18,13 @@ export default class App extends Component {
               <SearchBar />
             </div>
           </div>{/* row-end */} 
-          {/* row-start
+          {/* row-start */}
           <div className="row">
             <div className="col-xs-12 text-center">
-              <WeatherList />
+              <WeatherForecast />
             </div>
           </div> 
-          row-end */}  
+          {/* row-end */}  
       </div>
     );
   }

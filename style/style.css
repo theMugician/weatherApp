@@ -5,6 +5,7 @@
 	min-height: 200px;
 	padding-left: 0;
 	padding-right: 0;
+	box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
 }
 html{
 	background: #f3f3f3;
