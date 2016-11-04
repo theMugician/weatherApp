@@ -14,3 +14,67 @@ html{
 body{
 	background-color: transparent!important;
 }
+
+/* Toggle */
+
+
+.temp-toggle {
+  margin-left: 100px;
+  visibility: hidden;
+}
+.temp-toggle + label {
+  z-index: 3;
+  margin-top: 10px;
+  margin-right: 10px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.temp-toggle + label {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+input.temp-toggle + label:before,
+input.temp-toggle + label:after {
+  display: block;
+  position: absolute;
+}
+input.temp-toggle + label:before {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  transition: all 0.4s;
+  color: grey;
+  font-size: 14px;
+  content: "F";
+}
+
+input.temp-toggle + label:after {
+  content: "C";
+  text-align: center;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 40px;
+  color: #000000;
+  font-size: 20px;
+  transition: all 0.4s;
+}
+
+input.temp-toggle:checked + label:after {
+  margin-left: 20px;
+  font-size: 14px;
+  color: grey;
+}
+
+input.temp-toggle:checked + label:before {
+  margin-left: -40px;
+  font-size: 20px;
+  color: black;
+}

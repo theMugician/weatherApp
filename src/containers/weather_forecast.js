@@ -23,13 +23,8 @@ class WeatherForecast extends Component {
     
     let current_temp = 0;
 
-    if ( typeof weatherData === 'undefined' || weatherData === null ) {
-        return 123;
-    }
-
-
-    current_temp = Math.round(weatherData.list[0].main.temp - 273.15);
-    /*
+    //current_temp = Math.round(weatherData.list[0].main.temp - 273.15);
+    
     if ( typeof weatherData === 'undefined' || weatherData === null ) {
         return '';
     }
@@ -44,8 +39,8 @@ class WeatherForecast extends Component {
 
     const output_str = current_temp + this.props.temp.temp_unit;
     return output_str;
-    */
-    return current_temp;
+  
+    //return current_temp;
   }
 
   render() {
@@ -66,7 +61,7 @@ class WeatherForecast extends Component {
 
 function mapStateToProps(state) {
   return { 
-    weather: state.weather
+    weather: state.weather,
     temp: state.temp
   };
 }
