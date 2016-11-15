@@ -10,6 +10,26 @@ class WeatherForecast extends Component {
   //const temps = this.props.weather.main.temp;
   //const pressures = this.props.weather.main.pressure;
   //const humidities = this.props.weather.main.humidity;
+  displayIcon(weatherData) {
+    let weather = weatherData.list[0].weather[0].main;
+    weather = weather.toLowerCase();
+    if (weather.indexOf("snow") > -1) {
+        return "snow";
+    }
+    if (weather.indexOf("rain") > -1) {
+        return "rain";
+    }
+    if (weather.indexOf("cloud") > -1) {
+        return "cloudy";
+    }
+    if (weather.indexOf("clear") > -1) {
+        return "day-sunny";
+    }
+    if (weather.indexOf("fog") > -1) {
+        return "fog";
+    }
+    return "day-sunny";
+  }
 
   displayCity(weatherData) {
      console.log(this.props.weather);
@@ -48,13 +68,14 @@ class WeatherForecast extends Component {
   render() {
     let now = new Date();
     if(!this.props.weather){
-      return <div className="text-center col-xs-12"><h2> Please choose a city</h2></div>;  
+      return <div className="text-center col-xs-12"><h1> Please choose a city</h1></div>;  
     }
 
     return (
       <div className="text-center col-xs-12">
         {/* <h2>Current Temperature (&deg; {this.props.temp.temp_unit})</h2> */}
-         <h1 id="temp">{this.displayTemp(this.props.weather)}<sup>&deg;</sup></h1>
+         <h1 id="temp"><span className={"wi wi-main wi-" + this.displayIcon(this.props.weather)}>
+         </span>&nbsp;{this.displayTemp(this.props.weather)}<sup>&deg;</sup></h1>
          <h1>{this.displayCity(this.props.weather)}</h1> 
          <h2><Time value={now} format="HH:mm" /></h2>
         {/* <h2>Units: {this.props.temp.temp_unit}</h2> */}

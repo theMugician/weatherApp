@@ -40,6 +40,12 @@ p, h1, h2{
   margin-bottom: 0;
   font-size:  6rem;
 }
+
+/* weather forecast */
+.wi-main{
+  font-size:  5.3rem;
+}
+
 /* Geo-suggest */
 
 .geosuggest { 
@@ -258,7 +264,7 @@ input.temp-toggle:checked + label:before {
   margin-top: -4px;
   margin-left: -40px;
   font-size: 36px;
-  color: black;
+  color: white;
 }
 
 @keyframes xL-Change {
