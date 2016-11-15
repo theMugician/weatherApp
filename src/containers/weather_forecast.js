@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Time from 'react-time';
+import moment from 'react-moment';
 
 class WeatherForecast extends Component {
   
@@ -37,22 +39,24 @@ class WeatherForecast extends Component {
         current_temp = Math.round((weatherData.list[0].main.temp) * 9/5 - 459.67);
     }
 
-    const output_str = current_temp + this.props.temp.temp_unit;
+    const output_str = current_temp;
     return output_str;
   
     //return current_temp;
   }
 
   render() {
+    let now = new Date();
     if(!this.props.weather){
-      return <h2> please choose a city</h2>;  
+      return <div className="text-center col-xs-12"><h2> Please choose a city</h2></div>;  
     }
 
     return (
-      <div className="col-xs-12">
+      <div className="text-center col-xs-12">
         {/* <h2>Current Temperature (&deg; {this.props.temp.temp_unit})</h2> */}
-         <h2>City: {this.displayCity(this.props.weather)}</h2> 
-        <h2>Temperature: {this.displayTemp(this.props.weather)}</h2>
+         <h1 id="temp">{this.displayTemp(this.props.weather)}<sup>&deg;</sup></h1>
+         <h1>{this.displayCity(this.props.weather)}</h1> 
+         <h2><Time value={now} format="HH:mm" /></h2>
         {/* <h2>Units: {this.props.temp.temp_unit}</h2> */}
 	  </div>
     );

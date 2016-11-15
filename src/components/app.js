@@ -7,7 +7,7 @@ import WeatherForecast from '../containers/weather_forecast';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div id="top">
           <div className="row">
             <div className="col-xs-3 temp-buttons">
               
@@ -18,14 +18,18 @@ export default class App extends Component {
               <SearchBar />
             </div>
           </div>{/* row-end */} 
+
+        <div id="main">  
           {/* row-start */}
-          <div className="row">
-            <div className="col-xs-12 text-center">
+          <div className="main-wrapper">
+            
               <WeatherForecast />
-            </div>
+            
           </div> 
           {/* row-end */}  
+        </div>  
       </div>
+     
     );
   }
 }
