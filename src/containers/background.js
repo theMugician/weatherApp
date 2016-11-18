@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Time from 'react-time';
-import moment from 'react-moment';
 
-class WeatherForecast extends Component {
-  componentDidUpdate() {
-    this.props.getBgColor(this.appColor(this.props.weather));
-  }
+class Background extends Component {
+  
 
-  shouldComponentUpdate(nextProps) {
-    if(this.props.weather === 'undefined'){
-      return true
-    }
-    return this.props.weather !== nextProps.weather
-  }
-
+  
+  //const temps = this.props.weather.main.temp;
+  //const pressures = this.props.weather.main.pressure;
+  //const humidities = this.props.weather.main.humidity;
   displayIcon(weatherData) {
     let weather = weatherData.list[0].weather[0].main;
     weather = weather.toLowerCase();
@@ -37,6 +30,8 @@ class WeatherForecast extends Component {
   }
 
   displayCity(weatherData) {
+     console.log(this.props.weather);
+    console.log(weatherData);
     if ( typeof weatherData === 'undefined' || weatherData === null ) {
         return '';
     } else {
@@ -68,57 +63,17 @@ class WeatherForecast extends Component {
     //return current_temp;
   }
 
-  appColor(weatherData) {
-    console.log("app color working");
-
-    let temp = 0;
-    if ( typeof weatherData === 'undefined' || weatherData === null ) {
-      return 'app-bg1';
-    }
-    temp = Math.round(weatherData.list[0].main.temp - 273.15);
-    if (temp <= -30) {
-        return "app-bg1";
-    }
-    if (temp >= -29 && temp <= -21) {
-        return "app-bg2";
-    }
-    if (temp >= -20 && temp <= -11) {
-        return "app-bg3";
-    }
-    if (temp >= -10 && temp <= 4) {
-        alert("returned app-bg4");
-        return "app-bg4";
-    }
-    if (temp >= 5 && temp <= 15) {
-        alert("returned app-bg5");
-        return "app-bg5";
-    }
-    if (temp >= 16 && temp <= 24) {
-        return "app-bg6";
-    }
-    if (temp >= 25 && temp <= 32) {
-        return "app-bg7";
-    }
-    if (temp >= 33 && temp <= 38) {
-        return "app-bg8";
-    }
-    if (temp >= 39) {
-        return "app-bg9";
-    }
-  }
-
   render() {
+    /*
     let now = new Date();
     if(!this.props.weather){
       return <div className="text-center col-xs-12"><h1> Please choose a city</h1></div>;  
     }
-
+    */
     return (
-      <div className="text-center col-xs-12">
-         <h1 id="temp"><span className={"wi wi-main wi-" + this.displayIcon(this.props.weather)}>
-         </span>&nbsp;{this.displayTemp(this.props.weather)}<sup>&deg;</sup></h1>
-         <h1>{this.displayCity(this.props.weather)}</h1> 
-         <h2><Time value={now} format="HH:mm" /></h2>
+      <div className="background">
+         {/*<h1 id="temp"><span className={"wi wi-main wi-" + this.displayIcon(this.props.weather)}> */}
+         
 	  </div>
     );
   }
@@ -132,4 +87,4 @@ function mapStateToProps(state) {
 }
 
 // Connect state to props within WeatherList
-export default connect(mapStateToProps)(WeatherForecast);
+export default connect(mapStateToProps)(Background);

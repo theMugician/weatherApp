@@ -3,10 +3,23 @@ import { Component } from 'react';
 import SwitchUnits from '../containers/switch_units';
 import SearchBar from '../containers/search_bar';
 import WeatherForecast from '../containers/weather_forecast';
+//import Background from '../containers/background';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { appColorClass: 'app-bg1' };
+  }
+
+  setAppColor(colorClass) {
+    alert("set className");
+    this.setState({ appColorClass: colorClass });
+  }
+
   render() {
     return (
+    <div className={"app-container " + this.state.appColorClass}>
       <div id="top">
           <div className="row">
             <div className="col-xs-3 temp-buttons">
@@ -23,13 +36,15 @@ export default class App extends Component {
           {/* row-start */}
           <div className="main-wrapper">
             
-              <WeatherForecast />
+              <WeatherForecast getBgColor={color => this.setAppColor(color)} />
             
           </div> 
           {/* row-end */}  
         </div>  
       </div>
-     
+          
+    </div>  
+        
     );
   }
 }
