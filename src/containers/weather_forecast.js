@@ -86,11 +86,9 @@ class WeatherForecast extends Component {
         return "app-bg3";
     }
     if (temp >= -10 && temp <= 4) {
-        alert("returned app-bg4");
         return "app-bg4";
     }
     if (temp >= 5 && temp <= 15) {
-        alert("returned app-bg5");
         return "app-bg5";
     }
     if (temp >= 16 && temp <= 24) {
