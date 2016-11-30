@@ -4,22 +4,25 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 class SearchBar extends Component {
   componentDidMount() {
+    axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAZTwxyDDCFKTcHdmLfxp5IvH4XUVc8sXU', {
+      
+    })
+    .then(function (response) {
+      setTimeout(() => {
+        this.props.fetchWeather(response.data.location);
+      },3000)  
+    }.bind(this))
+    .catch(function (error) {
+      console.log(error);
+    });
     // findDOMNode returns an HTMLElement
-    console.log(this);
     const node = ReactDOM.findDOMNode(this.refs.geosuggest_component);
     // Then search the label
     const label = node.querySelector('label');
-    // Now, you can do anything you want with label
-    /*
-    label.addEventListener('click', function() { 
-      console.log(this);
-      console.log('clicked'); 
-      this.toggleSearch() 
-    }).bind(this);
-    */
     label.addEventListener('click', () => this.toggleSearch()) 
   }
   constructor(props) {
@@ -32,11 +35,9 @@ class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event);
   }
 
   toggleSearch(event) {
-    console.log('its being called');
     if (this.state.expand === ''){
         this.setState({expand: 'expand'});
             setTimeout(() => {
@@ -49,13 +50,9 @@ class SearchBar extends Component {
             },800)
             this.refs.geosuggest_component.clear();
         }
-       
-    //this.setState({ expand: 'expand' });
-    //console.log(event);
   }
 
   onSelection(event) {
-    console.log('Selected Coords: ', event.location);
 
     // Fetch weather data
     this.props.fetchWeather(event.location);

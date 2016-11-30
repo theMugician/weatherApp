@@ -13,7 +13,6 @@ export default class App extends Component {
   }
 
   setAppColor(colorClass) {
-    alert("set className");
     this.setState({ appColorClass: colorClass });
   }
 

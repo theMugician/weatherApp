@@ -11,7 +11,7 @@ export function fetchWeather(coord) {
   let longitude = coord.lng || coord.longitude;
   const url = `${ROOT_URL}?lat=${latitude}&lon=${longitude}&&appid=${API_KEY}`;
   const request = axios.get(url);
-  console.log('request: ', request)
+  //console.log('request: ', request)
   return {
     type: FETCH_WEATHER,
     payload: request

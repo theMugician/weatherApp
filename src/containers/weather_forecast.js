@@ -12,7 +12,7 @@ class WeatherForecast extends Component {
     if(this.props.weather === 'undefined'){
       return true
     }
-    return this.props.weather !== nextProps.weather
+    return this.props.weather !== nextProps.weather || this.props.temp !== nextProps.temp 
   }
 
   displayIcon(weatherData) {
@@ -45,7 +45,7 @@ class WeatherForecast extends Component {
   }
 
   displayTemp(weatherData) {
-    
+    console.log('displayTemp()');
     let current_temp = 0;
 
     //current_temp = Math.round(weatherData.list[0].main.temp - 273.15);
@@ -108,7 +108,24 @@ class WeatherForecast extends Component {
   render() {
     let now = new Date();
     if(!this.props.weather){
-      return <div className="text-center col-xs-12"><h1> Please choose a city</h1></div>;  
+      //return <div className="text-center col-xs-12"><h1> Please choose a city</h1></div>;  
+      return (
+
+        <div>
+          <div className="col-xs-12">
+          <div className="icon sunny">
+            <div className="sun">
+              <div className="rays"></div>
+            </div>
+          </div>
+          </div>
+          <div className="text-center col-xs-12 loading-text">
+        
+            <h1>Loading</h1>
+          
+          </div>
+        </div>  
+        )
     }
 
     return (

@@ -13,6 +13,7 @@ class SwitchUnits extends Component {
 
   switchTemp(event) {
     let tempUnit = '';
+    console.log('switchTemp()');
     //console.log(' toggle state: ' this.state.checked);
     this.setState({
       checked: !this.state.checked
